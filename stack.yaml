@@ -1,0 +1,9 @@
+resolver: lts-14.27
+
+packages:
+  - .
+
+extra-deps:
+  - hakyll-4.13.0.1
+  - http2-1.6.5
+  - warp-3.2.28
