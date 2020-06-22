@@ -1,3 +1,4 @@
 .stack-work
 .stack-work-devel
 _cache
+node_modules
