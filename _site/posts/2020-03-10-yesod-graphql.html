@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>tuxagon - 2020-03-10-yesod-graphql</title>
+  <link rel="stylesheet" href="../css/default.css" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+  <div class="container mx-auto pt-10 pb-10"></div>
+    <div class="flex justify-center border border-purple-500">
+      <nav>
+        <a href="../">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../archive.html">Archive</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container mx-auto">
+    <main class="tux-post rounded-tl-lg rounded-br-lg p-5">
+      <h1>2020-03-10-yesod-graphql</h1>
+      <article>
+    <section class="header">
+        Posted on March 10, 2020
+        
+    </section>
+    <section>
+        <p>As a preface, I am learning Yesod and trying to better my understanding of Haskell. There is likely a deeper understanding that could be gained from someone else writing this post. I will try my best to present everything as accurately and clear as possible. YMMV.</p>
+<p>This post assumes you have at least a vague understanding of Yesod’s routing as well as GraphQL. If you would like a refresher on either, you can visit the following links as a jumping off point</p>
+<ul>
+<li><p>https://graphql.org/learn/</p></li>
+<li><p>https://www.yesodweb.com/book/basics#basics_routing</p></li>
+</ul>
+<p>Now that we’re all caught up, we can set up a GraphQL route within Yesod. Instead of using a pre-defined stack Yesod template, I’m going to set up a Yesod application using a basic foundation (:sunglasses:) to reduce this down to its barest parts.</p>
+<p>Here is the file you should start with if you want to follow along with this blog post.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="ot">{-# LANGUAGE OverloadedStrings     #-}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="ot">{-# LANGUAGE QuasiQuotes           #-}</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ot">{-# LANGUAGE TemplateHaskell       #-}</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="ot">{-# LANGUAGE TypeFamilies          #-}</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="kw">import</span>           <span class="dt">Yesod</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">data</span> <span class="dt">LibraryApp</span> <span class="ot">=</span> <span class="dt">LibraryApp</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a>mkYesod <span class="st">&quot;HelloWorld&quot;</span> [parseRoutes|</span>
+<span id="cb1-10"><a href="#cb1-10"></a>/ HomeR GET</span>
+<span id="cb1-11"><a href="#cb1-11"></a>|]</span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="kw">instance</span> <span class="dt">Yesod</span> <span class="dt">LibraryApp</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="ot">getHomeR ::</span> <span class="dt">Handler</span> <span class="dt">Html</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>getHomeR <span class="ot">=</span> defaultLayout [whamlet|Hello World!|]</span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="ot">main ::</span> <span class="dt">IO</span> ()</span>
+<span id="cb1-19"><a href="#cb1-19"></a>main <span class="ot">=</span> warp <span class="dv">3000</span> <span class="dt">LibraryApp</span></span></code></pre></div>
+<p>In reality, it doesn’t matter if you use the above code or a stack template because we won’t really be changing much; however, I’d like to give a code-complete representation at the end that shows the whole picture as best as I can.</p>
+<h1 id="clean-up-the-base-template-above-to-be-an-api">Clean up the base template above to be an API</h1>
+<h1 id="add-graphql-route">Add GraphQL Route</h1>
+<h1 id="add-graphql-types-from-a-separate-file">Add GraphQL Types from a separate File</h1>
+<h1 id="add-graphql-types-in-the-same-file">Add GraphQL Types in the same file</h1>
+<h1 id="discuss-the-issues-with-encode-and-tojson-without-jsonresponse">Discuss the issues with <code>encode</code> and <code>toJSON</code> without JSONResponse</h1>
+<h1 id="potentially-discuss-the-scotty-example-and-why-it-works">Potentially discuss the Scotty example and why it works</h1>
+<h1 id="present-client-curl-thta-works">Present Client CURL thta works</h1>
+<h1 id="consider-trying-out-the-typedcontent-type-class-as-an-example-but-reiterate-that-it-doesnt-really-fit-since-we-arent-dealing-with-a-different-conent-type-spills-implementation-details">Consider Trying out the TypedContent type class as an example, but reiterate that it doesn’t really fit since we aren’t dealing with a different conent type (spills implementation details)</h1>
+<h1 id="present-finished-copy-along-with-the-stack-template-repo">Present finished copy along with the stack template repo</h1>
+    </section>
+</article>
+
+    </main>
+  </div>
+
+  <main role="main">
+  </main>
+
+  <footer>
+    Site proudly generated by
+    <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+  </footer>
+</body>
+</html>

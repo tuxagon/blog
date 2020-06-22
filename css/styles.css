@@ -1,0 +1,43 @@
+/**
+ * Color Scheme
+ * #f2f1ef - isabelline
+ * #b1a6a4 - quick silver
+ * #697184 - aurometalsaurus
+ * #d8cfd0 - light gray
+ * #413f3d - black olive
+ */
+@tailwind base;
+
+body {
+  background-color: #2a9d8f;
+  color: #e9c46a;
+}
+
+h1, h2, h3 {
+  color: #f4a261;
+  font-weight: bold;
+}
+h1 {
+  @apply text-2xl;
+  color: #e76f51;
+}
+h2 {
+  @apply text-xl;
+}
+h3 {
+  @apply text-lg;
+}
+
+nav a {
+  @apply font-bold;
+  @apply text-2xl;
+  color: #264653;
+}
+
+.tux-post {
+  background-color: #264653;
+}
+
+@tailwind components;
+
+@tailwind utilities;
